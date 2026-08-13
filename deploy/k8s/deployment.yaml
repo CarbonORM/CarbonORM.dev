@@ -15,7 +15,7 @@ spec:
     type: RollingUpdate
     rollingUpdate:
       maxSurge: 1
-      maxUnavailable: 0
+      maxUnavailable: 1
   template:
     metadata:
       labels:
@@ -25,6 +25,9 @@ spec:
         - name: build-docs
           image: node:24-alpine
           imagePullPolicy: IfNotPresent
+          env:
+            - name: NODE_OPTIONS
+              value: --max-old-space-size=4096
           command:
             - /bin/sh
             - -c
@@ -42,10 +45,10 @@ spec:
           resources:
             requests:
               cpu: 250m
-              memory: 512Mi
+              memory: 1Gi
             limits:
-              cpu: "2"
-              memory: 2Gi
+              cpu: "4"
+              memory: 6Gi
       containers:
         - name: docs
           image: nginxinc/nginx-unprivileged:1.27-alpine
