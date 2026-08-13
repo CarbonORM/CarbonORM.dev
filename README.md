@@ -9,14 +9,11 @@ The documentation is published as a static nginx container at:
 
 https://carbonorm.miles.systems/
 
-Container images are built from the `www` branch and pushed to GHCR as:
+Harvester Kubernetes manifests live in `deploy/k8s/`. The pod builds the static
+site from the public `www` branch in an init container, then serves the build
+with nginx.
 
-```text
-ghcr.io/carbonorm/carbonorm.dev:<commit-sha>
-ghcr.io/carbonorm/carbonorm.dev:latest
-```
-
-Harvester Kubernetes manifests live in `deploy/k8s/` and are applied with:
+Apply with:
 
 ```bash
 KUBECONFIG=$HOME/.kube/local.yaml kubectl apply -k deploy/k8s

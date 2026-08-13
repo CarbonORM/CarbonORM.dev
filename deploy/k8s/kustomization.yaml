@@ -4,5 +4,6 @@ resources:
   - namespace.yaml
   - deployment.yaml
   - service.yaml
+  - nginx-config.yaml
   - certificate.yaml
   - ingress.yaml
