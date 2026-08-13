@@ -1,4 +1,4 @@
-name: Build
+name: Build Harvester Site
 
 on:
   push:
@@ -8,11 +8,11 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build:
-    name: Build static docs
+    name: Build and publish static docs
     runs-on: ubuntu-latest
     steps:
       - name: Check out source
@@ -23,3 +23,20 @@ jobs:
 
       - name: Build
         run: npm run build:actions
+
+      - name: Publish Harvester artifact branch
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -eu
+          tmpdir="$(mktemp -d)"
+          cp -a build/. "$tmpdir/"
+          cd "$tmpdir"
+          git init
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b harvester-site
+          git add .
+          git commit -m "Build Harvester site for ${GITHUB_SHA}"
+          git remote add origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git push --force origin harvester-site

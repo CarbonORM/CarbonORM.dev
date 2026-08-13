@@ -9,9 +9,9 @@ The documentation is published as a static nginx container at:
 
 https://carbonorm.miles.systems/
 
-Harvester Kubernetes manifests live in `deploy/k8s/`. The pod builds the static
-site from the public `www` branch in an init container, then serves the build
-with nginx.
+Harvester Kubernetes manifests live in `deploy/k8s/`. GitHub Actions builds the
+static site from `www` into the `harvester-site` branch; the Harvester pod clones
+that prebuilt artifact branch and serves it with nginx.
 
 Apply with:
 
