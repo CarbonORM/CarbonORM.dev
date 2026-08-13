@@ -4,7 +4,7 @@
   "description": "CarbonORM Documentation by Richard Miles.",
   "private": false,
   "main": "src/index.tsx",
-  "homepage": "https://carbonorm.dev/",
+  "homepage": "https://carbonorm.miles.systems/",
   "dependencies": {
     "@carbonorm/carbonnode": "^1.4.4",
     "@carbonorm/carbonreact": "^3.4.7",
@@ -84,7 +84,7 @@
   },
   "scripts": {
     "build": "npm run-script env && npm run build:css && npm run build:actions",
-    "build:actions": "CI=true PUBLIC_URL=https://carbonorm.dev/ react-app-rewired build",
+    "build:actions": "CI=true PUBLIC_URL=https://carbonorm.miles.systems/ react-app-rewired build",
     "build:css": "npm run sass && npm run css:modules",
     "c6": "npx generateRestBindings --user root --password password --host 127.0.0.1 --port 3306 --dbname CarbonPHP --prefix carbon_ --output /src/api/rest",
     "css:modules": "typed-scss-modules 'src/**/*.?(s)css' --nameFormat all --exportType default src",
