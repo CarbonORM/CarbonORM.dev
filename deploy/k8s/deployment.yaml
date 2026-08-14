@@ -31,7 +31,7 @@ spec:
             - |
               set -eu
               rm -rf /site/* /site/.[!.]* /site/..?* || true
-              git clone --depth 1 --branch harvester-site https://github.com/CarbonORM/CarbonORM.dev.git /tmp/site
+              git clone --depth 1 --branch harvester-site https://git.miles.systems/CarbonORM/CarbonORM.dev.git /tmp/site
               cp -a /tmp/site/. /site/
               rm -rf /site/.git
           volumeMounts:
