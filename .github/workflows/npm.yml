@@ -32,7 +32,7 @@ jobs:
           set -eu
           test -n "$FORGEJO_MIRROR_TOKEN"
           git remote add forgejo "https://richardtmiles:${FORGEJO_MIRROR_TOKEN}@git.miles.systems/CarbonORM/CarbonORM.dev.git"
-          git push forgejo "${GITHUB_SHA}:refs/heads/www"
+          git push --no-verify forgejo "${GITHUB_SHA}:refs/heads/www"
 
       - name: Publish Harvester artifact branch
         env:
