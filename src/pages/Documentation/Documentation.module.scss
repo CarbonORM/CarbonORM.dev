@@ -1,0 +1,268 @@
+.documentationShell {
+  min-height: 100vh;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+.lightShell {
+  background: #f4f7f9;
+  color: #101828;
+}
+
+.darkShell {
+  background: #05070a;
+  color: #f8fafc;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  min-height: clamp(340px, 38vw, 460px);
+  padding: 112px 24px 74px;
+  background:
+    linear-gradient(90deg, rgba(244, 247, 249, 0.98) 0%, rgba(244, 247, 249, 0.93) 46%, rgba(244, 247, 249, 0.72) 100%);
+  border-bottom: 1px solid rgba(16, 24, 40, 0.08);
+}
+
+.darkShell .hero {
+  background:
+    linear-gradient(90deg, rgba(5, 7, 10, 0.98) 0%, rgba(5, 7, 10, 0.94) 48%, rgba(5, 7, 10, 0.78) 100%);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+.heroInner {
+  position: relative;
+  max-width: 1260px;
+  margin: 0 auto;
+}
+
+.heroText {
+  position: relative;
+  z-index: 2;
+  max-width: 740px;
+}
+
+.heroTitle {
+  margin: 0 0 20px;
+  color: inherit;
+  font-size: clamp(3rem, 6vw, 5.25rem);
+  font-weight: 700;
+  line-height: 0.98;
+}
+
+.heroSubtitle {
+  max-width: 700px;
+  margin: 0;
+  color: inherit;
+  font-size: clamp(1.1rem, 1.7vw, 1.4rem);
+  font-weight: 500;
+  line-height: 1.42;
+}
+
+.heroMark {
+  position: absolute;
+  top: -92px;
+  right: -170px;
+  z-index: 1;
+  width: clamp(420px, 47vw, 700px);
+  max-width: none;
+  opacity: 0.34;
+  pointer-events: none;
+  user-select: none;
+}
+
+.darkShell .heroMark {
+  opacity: 0.24;
+}
+
+.documentArea {
+  position: relative;
+  z-index: 3;
+  max-width: 1320px;
+  margin: -36px auto 0;
+  padding: 0 24px 72px;
+}
+
+.docsNav {
+  position: sticky;
+  top: 78px;
+  z-index: 20;
+  border: 1px solid rgba(16, 24, 40, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 16px 40px rgba(16, 24, 40, 0.12);
+  backdrop-filter: blur(12px);
+}
+
+.darkShell .docsNav {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(17, 24, 39, 0.96);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+}
+
+.docsNavInner {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 10px 12px;
+}
+
+.docsNavBrand {
+  flex: 0 0 auto;
+  padding: 8px 10px;
+  color: #344054;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.darkShell .docsNavBrand {
+  color: #cbd5e1;
+}
+
+.docsNavLinks {
+  display: flex;
+  flex: 1 1 auto;
+  gap: 4px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.docsNavLink {
+  flex: 0 0 auto;
+  padding: 9px 12px;
+  border-radius: 6px;
+  color: #344054;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.docsNavLink:hover,
+.docsNavLink:focus {
+  color: #006d77;
+  background: rgba(0, 172, 193, 0.1);
+  text-decoration: none;
+}
+
+.docsNavLinkActive,
+.docsNavLinkActive:hover,
+.docsNavLinkActive:focus {
+  color: #ffffff;
+  background: #007d8d;
+}
+
+.darkShell .docsNavLink {
+  color: #e2e8f0;
+}
+
+.darkShell .docsNavLink:hover,
+.darkShell .docsNavLink:focus {
+  color: #ffffff;
+  background: rgba(34, 211, 238, 0.16);
+}
+
+.darkShell .docsNavLinkActive,
+.darkShell .docsNavLinkActive:hover,
+.darkShell .docsNavLinkActive:focus {
+  color: #051013;
+  background: #67e8f9;
+}
+
+.documentContent {
+  margin-top: 18px;
+  padding: clamp(24px, 4vw, 48px);
+  border: 1px solid rgba(16, 24, 40, 0.08);
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 12px 32px rgba(16, 24, 40, 0.08);
+  color: #101828;
+  font-size: 1.06rem;
+  line-height: 1.68;
+}
+
+.darkShell .documentContent {
+  border-color: rgba(255, 255, 255, 0.1);
+  background: #0b0f16;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.26);
+  color: #f8fafc;
+}
+
+.documentContent h1,
+.documentContent h2,
+.documentContent h3,
+.documentContent h4 {
+  color: inherit;
+  letter-spacing: 0;
+}
+
+.documentContent a {
+  color: #007d8d;
+}
+
+.darkShell .documentContent a {
+  color: #67e8f9;
+}
+
+@media (max-width: 959px) {
+  .hero {
+    min-height: auto;
+    padding: 100px 20px 54px;
+  }
+
+  .heroTitle {
+    font-size: clamp(2.4rem, 12vw, 4rem);
+  }
+
+  .heroMark {
+    top: -40px;
+    right: -220px;
+    width: 540px;
+    opacity: 0.14;
+  }
+
+  .documentArea {
+    margin-top: 0;
+    padding: 0 14px 48px;
+  }
+
+  .docsNav {
+    top: 72px;
+    border-radius: 0 0 8px 8px;
+  }
+
+  .docsNavInner {
+    display: block;
+  }
+
+  .docsNavBrand {
+    display: block;
+  }
+
+  .documentContent {
+    margin-top: 14px;
+  }
+}
+
+@media (max-width: 599px) {
+  .hero {
+    padding: 92px 18px 44px;
+  }
+
+  .heroSubtitle {
+    font-size: 1rem;
+  }
+
+  .heroMark {
+    display: none;
+  }
+
+  .documentContent {
+    padding: 20px 16px;
+    font-size: 1rem;
+  }
+}

@@ -1,15 +1,6 @@
-
-// @material-ui/core components
-import withStyles from "@material-ui/core/styles/withStyles";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
 import classNames from "classnames";
-import HeaderTop from "pages/Documentation/HeaderTop/HeaderTop";
-import CustomDropdown from "pages/UI/MaterialUI/components/CustomDropdown/CustomDropdown";
-
-import navbarsStyle from "assets/jss/material-kit-react/views/componentsSections/navbarsStyle";
-
 import {NavLink} from "react-router-dom";
+import styles from "./Documentation.module.scss";
 
 
 function isCurrentlyActive(url: string) {
@@ -19,7 +10,7 @@ function isCurrentlyActive(url: string) {
 }
 
 function Navbar(props) {
-    const {classes, routes, color, brand} = props;
+    const {routes = []} = props;
 
     let tabs: any[] = [];
 
@@ -30,45 +21,31 @@ function Navbar(props) {
             }
             // doesn't need a sub menu
             if (!('views' in o)) {
-                tabs.push(<ListItem className={classes.listItem} key={key}>
+                tabs.push(
                     <NavLink
                         to={o.path.replace(/\*$/, '')}
-                        className={classes.navLink + " " + classes.navLinkActive}
+                        className={({isActive}) => classNames(styles.docsNavLink, {
+                            [styles.docsNavLinkActive]: isActive
+                        })}
                         key={key}
                     >
                         {o.name}
-                    </NavLink>
-                </ListItem>)
+                    </NavLink>)
                 return;
             }
 
             tabs.push(
-                <ListItem className={classes.listItem} key={key}>
-                    <CustomDropdown
-                        left
-                        key={key}
-                        caret={true}
-                        hoverColor="info"
-                        dropdownHeader={o.name}
-                        buttonText={o.name}
-                        buttonProps={{
-                            className: classes.navLink + " ",
-                        }}
-                        dropdownList={o.views.map((m, key2) => {
-                            return <ListItem className={classes.listItem} key={key2}>
-                                <NavLink
-                                    to={m.path}
-                                    className={classNames(classes.navLink, {
-                                        [classes.navLinkActive]: isCurrentlyActive(m.path)
-                                    })}
-                                    key={key2}
-                                >
-                                    {m.name}
-                                </NavLink>
-                            </ListItem>
+                <div className={styles.docsNavLinks} key={key}>
+                    {o.views.map((m, key2) => <NavLink
+                        to={m.path}
+                        className={classNames(styles.docsNavLink, {
+                            [styles.docsNavLinkActive]: isCurrentlyActive(m.path)
                         })}
-                    />
-                </ListItem>
+                        key={key2}
+                    >
+                        {m.name}
+                    </NavLink>)}
+                </div>
             );
 
         }
@@ -76,25 +53,19 @@ function Navbar(props) {
 
 
     return (
-        <div className={classes.section}>
-            <div className={classes.container}>
-                <HeaderTop
-                    darkMode={props.darkMode}
-                    brand={brand ? brand : "Documentation"}
-                    color={color ? color : "dark"}
-                    rightLinks={
-                        <List className={classes.list}>
-                            {tabs}
-                        </List>
-                    }
-                />
+        <nav className={styles.docsNav} aria-label="Documentation sections">
+            <div className={styles.docsNavInner}>
+                <span className={styles.docsNavBrand}>Documentation</span>
+                <div className={styles.docsNavLinks}>
+                    {tabs}
+                </div>
             </div>
-        </div>
+        </nav>
     );
 
 }
 
-export default withStyles(navbarsStyle)(Navbar);
+export default Navbar;
 
 
 // thur feb 21 1140
