@@ -41,7 +41,7 @@ const headerLinksStyle = (theme: Theme) =>
       width: "auto",
       margin: "0",
       padding: "0",
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("sm")]: {
         width: "100%",
         "&:after": {
           width: "calc(100% - 30px)",
@@ -72,7 +72,7 @@ const headerLinksStyle = (theme: Theme) =>
         color: "inherit",
         background: "rgba(200, 200, 200, 0.2)"
       },
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("sm")]: {
         width: "calc(100% - 30px)",
         marginLeft: "15px",
         marginBottom: "8px",
