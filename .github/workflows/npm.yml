@@ -24,9 +24,20 @@ jobs:
       - name: Build
         run: npm run build:actions
 
+      - name: Mirror source branch to Forgejo
+        if: github.event_name == 'push' && github.ref == 'refs/heads/www'
+        env:
+          FORGEJO_MIRROR_TOKEN: ${{ secrets.FORGEJO_MIRROR_TOKEN }}
+        run: |
+          set -eu
+          test -n "$FORGEJO_MIRROR_TOKEN"
+          git remote add forgejo "https://richardtmiles:${FORGEJO_MIRROR_TOKEN}@git.miles.systems/CarbonORM/CarbonORM.dev.git"
+          git push forgejo "${GITHUB_SHA}:refs/heads/www"
+
       - name: Publish Harvester artifact branch
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          FORGEJO_MIRROR_TOKEN: ${{ secrets.FORGEJO_MIRROR_TOKEN }}
         run: |
           set -eu
           tmpdir="$(mktemp -d)"
@@ -40,3 +51,8 @@ jobs:
           git commit -m "Build Harvester site for ${GITHUB_SHA}"
           git remote add origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           git push --force origin harvester-site
+          if [ "${GITHUB_EVENT_NAME}" = "push" ] && [ "${GITHUB_REF}" = "refs/heads/www" ]; then
+            test -n "$FORGEJO_MIRROR_TOKEN"
+            git remote add forgejo "https://richardtmiles:${FORGEJO_MIRROR_TOKEN}@git.miles.systems/CarbonORM/CarbonORM.dev.git"
+            git push --force forgejo harvester-site
+          fi

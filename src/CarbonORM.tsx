@@ -3,6 +3,7 @@ import Notifications from "@material-ui/icons/Notifications";
 import {initialRestfulObjectsState} from "api/rest/C6";
 import {PAYPAL_CLIENT_ID} from "components/PayPal/PayPal";
 import CarbonJava, {CARBON_JAVA} from "pages/CarbonJava/CarbonJava";
+import CarbonC, {CARBON_C} from "pages/Documentation/CarbonC/CarbonC";
 import CarbonNode, {CARBON_NODE} from "pages/Documentation/CarbonNode/CarbonNode";
 import CarbonReactDocumentation, {CARBON_REACT} from "pages/Documentation/CarbonReact/CarbonReact";
 import CarbonWordPress, {CARBON_WORDPRESS} from "pages/Documentation/CarbonWordPress/CarbonWordPress";
@@ -167,9 +168,10 @@ export default class CarbonORM extends CarbonReact<{ browserRouter?: boolean }, 
                     <Route path={DOCUMENTATION + '*'} element={ppr<iDocumentation>(Documentation, {
                         headerLinks: [
                             {name: "ORM Introduction", path: "/" + DOCUMENTATION + CARBON_ORM_INTRODUCTION},
-                            {name: "PHP", path: "/" + DOCUMENTATION + CARBON_PHP},
+                            {name: "C", path: "/" + DOCUMENTATION + CARBON_C},
                             {name: "Node", path: "/" + DOCUMENTATION + CARBON_NODE},
                             {name: "React", path: "/" + DOCUMENTATION + CARBON_REACT},
+                            {name: "PHP", path: "/" + DOCUMENTATION + CARBON_PHP},
                             {name: "WordPress", path: "/" + DOCUMENTATION + CARBON_WORDPRESS},
                             {name: "Java", path: "/" + DOCUMENTATION + CARBON_JAVA},
                             {name: "Implementations", path: "/" + DOCUMENTATION + IMPLEMENTATIONS},
@@ -178,9 +180,10 @@ export default class CarbonORM extends CarbonReact<{ browserRouter?: boolean }, 
                         ]
                     })}>
                         <Route path={CARBON_ORM_INTRODUCTION + '*'} element={ppr(CarbonORMDocumentation, {})}/>
-                        <Route path={CARBON_PHP + '*'} element={ppr(CarbonPHP, {})}/>
+                        <Route path={CARBON_C + '*'} element={ppr(CarbonC, {})}/>
                         <Route path={CARBON_NODE + '*'} element={ppr(CarbonNode, {})}/>
                         <Route path={CARBON_REACT + '*'} element={ppr(CarbonReactDocumentation, {})}/>
+                        <Route path={CARBON_PHP + '*'} element={ppr(CarbonPHP, {})}/>
                         <Route path={CARBON_WORDPRESS + '*'} element={ppr(CarbonWordPress, {})}/>
                         <Route path={CARBON_JAVA + '*'} element={ppr(CarbonJava, {})}/>
                         <Route path={IMPLEMENTATIONS + "*"} element={ppr(Implementations, {})}/>
@@ -212,4 +215,3 @@ export default class CarbonORM extends CarbonReact<{ browserRouter?: boolean }, 
 
     }
 }
-
